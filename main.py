@@ -3,6 +3,7 @@ import os
 from audioop import add
 from nested_lookup import nested_lookup
 from nested_lookup import nested_update
+from nested_lookup import nested_delete
 
 import yaml
 
@@ -51,7 +52,15 @@ def add_command(path, cmd_name, scroll_text, twch_text, role):
         fo.write(sdump)
 
 
-# def remove_command(path, cmd_name):
+def remove_command(path, cmd):
+    dictionary = {'scroll_text': scroll_text, 'twitch_text': twch_text, 'role': role}
+    with open(path, "r") as r:
+        data = list(yaml.load_all(r, Loader=yaml.FullLoader))
+        data = nested_delete(data, cmd)
+        print(nested_lookup(cmd, data))
+
+    with open(path, 'w') as f:
+        data = yaml.dump(data, f)
 
 
 def dump_yaml(path):
@@ -70,13 +79,22 @@ def update_command(path, cmd, scroll_text, twch_text, role):
     dictionary = {'scroll_text': scroll_text, 'twitch_text': twch_text, 'role': role}
     with open(path, "r") as r:
         data = list(yaml.load_all(r, Loader=yaml.FullLoader))
-        nested_update(data, key=cmd, value=dictionary)
+        data = nested_update(data, key=cmd, value=dictionary)
         print(nested_lookup(cmd, data))
 
+    with open(path, 'w') as f:
+        data = yaml.dump(data, f)
+
 if __name__ == '__main__':
+    cmd = "pokus32"
+    scroll_text = "RD"
+    twch_text = "RD"
+    role = "Geek"
+    
     # create_yaml()
-    print_command("commands.yaml", "Ahoj")
-    # add_command("commands.yaml", "Ahoj", "Ahoj", "Ahoj", "Admin")
-    update_command("commands.yaml", "Ahoj", "pokuspokuspokus", "pokuspokuspokus", "Geek")
+    print_command("commands.yaml", cmd)
+    add_command("commands.yaml", cmd, scroll_text, twch_text, role)
+    #update_command("commands.yaml", cmd, scroll_text, twch_text, role)
+    # remove_command("commands.yaml", cmd)
     # dump_yaml("commands.yaml")
 

@@ -1,8 +1,20 @@
-  pokus:
+- - - - Ahoj:
+          role: Admin
+          scroll_text: Ahoj
+          twitch_text: Ahoj
+        pokus:
+          role: Admin
+          scroll_text: Pokus11
+          twitch_text: Pokus11
+        pokus22:
+          role: Admin
+          scroll_text: Pokus22
+          twitch_text: Pokus22
+        reklama:
+          role: Geek
+          scroll_text: dalsi stream bude 8.8.
+          twitch_text: dalsi stream bude 8.8.
+  pokus32:
     role: Geek
-    scroll_text: pokus
-    twitch_text: pokus
-  Ahoj:
-    role: Admin
-    scroll_text: Ahoj
-    twitch_text: Ahoj
+    scroll_text: RD
+    twitch_text: RD
