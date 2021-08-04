@@ -1,0 +1,8 @@
+  pokus:
+    role: Geek
+    scroll_text: pokus
+    twitch_text: pokus
+  Ahoj:
+    role: Admin
+    scroll_text: Ahoj
+    twitch_text: Ahoj
