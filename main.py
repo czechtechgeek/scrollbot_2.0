@@ -97,4 +97,5 @@ if __name__ == '__main__':
     #update_command("commands.yaml", cmd, scroll_text, twch_text, role)
     # remove_command("commands.yaml", cmd)
     # dump_yaml("commands.yaml")
+    print("ahoj)
 
